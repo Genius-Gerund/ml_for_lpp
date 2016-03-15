@@ -1,0 +1,226 @@
+---
+title: "Coursework"
+author: "Pavel Sulimov"
+date: "Tuesday, June 09, 2015"
+output: html_document
+---
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r}
+library(igraph)
+library(pryr)
+library(ggplot2)
+library(bigmemory)
+data<-read.delim(file.choose(),header=F, sep="")
+g<-graph.data.frame(data[,-3])
+E(g)$weight<-data[,3]#set weights
+users<-read.delim(file.choose(),header=F, sep=",")#get users
+for (i in seq(min+2629800,max, by=2629800)){
+nam<-paste("g",i,sep="")
+assign(nam, graph.data.frame(subset(k,k[,3]<i),directed=F)+vertices(subset(users[,1],users[,2]<i)))}
+contacts<-subset(data, data[,3]>0)
+length(which(users[,2]<4e+07))#узнаем количество эл-нтов с условием
+g2<-graph(subset(k,k[,3]<6e+07),directed=F,vertices=subset(users[,1],users[,2]<6e+07))
+```
+
+You can also embed plots, for example:
+
+```{r, echo=FALSE}
+#Code for graphs
+library(igraph)
+for (i in seq(min+2629800,max, by=2629800)){
+nam<-paste("g",i,sep="")
+assign(nam, graph.data.frame(subset(k,k[,3]<i+1),directed=F))}
+
+for (j in 1:nrow(users)){
+ifelse(any(as.numeric(V(g11390400)$name)==users[j,1]),g11390400,g11390400<-g11390400+vertices(subset(users[j,1],users[j,2]<11390401)))}
+g1<-g2
+g2<-g3
+g3<-g4
+g4<-g5
+g5<-g6
+rm(g6)
+
+contacts_data<-subset(contacts_data,contacts_data[,2]<31071)
+contacts_data<-subset(contacts_data,contacts_data[,3]<56050000)
+#New graph-creating algorithm
+
+for (i in seq(28558015,28903615, by=86400)){
+nam<-paste("g",i,sep="")
+assign(nam, graph.empty(directed=F))}
+
+g28903615<-graph.empty(directed=F)
+g28903615<-g28903615+vertices(subset(users_data[,1],users_data[,2]<28903616))
+for (i in 1:nrow(contacts_data)){
+ifelse(contacts_data[i,3]<28903616&contacts_data[i,1]<(vcount(g28903615)+1)&contacts_data[i,2]<(vcount(g28903615)+1),g28903615<-g28903615+edges(c(contacts_data[i,1],contacts_data[i,2])),g28903615)
+}
+g28903615<-simplify(g28903615)
+#Creating data.frame for loops
+g<-g28903615
+
+v_g<-rep(NA, vcount(g))
+for (i in 1:vcount(g)){
+current.v_g<-as.numeric(V(g)[i]$name)
+v_g[i]<-current.v_g}
+v_g<-sort(v_g)
+m_g<-expand.grid(v_g,v_g)
+m_g<-cbind(m_g[,2],m_g[,1])
+m_g<-as.data.frame(m_g)
+m_g<-m_g[m_g[,1]<m_g[,2],]
+
+#Creating vector of names for links
+link_name<-rep(NA,nrow(m_g))
+for (i in 1:nrow(m_g)){
+nam<-paste(m_g$V1[i],0,0,0,m_g$V2[i],sep="")
+link_name[i]<-nam}
+
+#Setting vertex attributes to graph
+#g<-set.vertex.attribute(g, "City", value=u[,3])
+
+#Data frame with Jaccard
+JC<-rep(NA,nrow(m_g))
+for (i in 1:nrow(m_g)){
+current.JC=similarity.jaccard(g,c(m_g$V1[i],m_g$V2[i]))
+JC[i]<-current.JC[2,1]}
+
+#Creating vector of links
+link<-rep(NA,nrow(m_g))
+for (i in 1:nrow(m_g)){
+current.link<-g[m_g$V1[i],m_g$V2[i]]
+link[i]<-current.link}
+
+#Calculating score (living in the same city)
+#score<-rep(NA,nrow(m_g))
+#for (i in 1:nrow(m_g)){
+#current.score=abs(get.vertex.attribute(g, "City",m_g$V1[i])-get.vertex.attribute(g, "City",m_g$V2[i]))
+#score[i]<-current.score}
+
+#Getting shotest path from i to j
+sp<-rep(NA,nrow(m_g))
+for (i in 1:nrow(m_g)){
+current.sp<-(-1)*shortest.paths(g,v=m_g$V1[i], to=m_g$V2[i])
+sp[i]<-current.sp}
+
+#Getting avarage clustering coefficient
+CC<-rep(NA,nrow(m_g))
+for (i in 1:nrow(m_g)){
+current.CC<-(transitivity(g,type="local",m_g$V1[i],isolates="zero")+
+               transitivity(g,type="local",m_g$V2[i],isolates="zero"))
+CC[i]<-current.CC}
+
+#Compound all columns in one data frame
+data_g26<-cbind(link,sp,JC,CC)
+rownames(data_g26)<-link_name
+data_g26<-as.data.frame(data_g26)
+
+#Replacing function
+for (i in 1:31070){
+contacts_new1<-replace(contacts1,contacts1==users.id.old[i],users.id[i])}
+
+#Deleting rows
+data_new1<-data_g24
+data_new2<-data.frame()
+for (i in 1:nrow(data_g25)){
+ifelse(any(as.numeric(row.names(data_g24))==as.numeric(row.names(data_g25)[i])),data_new2<-rbind(data_new2,data_g25[i,]),data_new2)
+}
+#New row names 
+##data_new2<-data.frame(data_new2,row.names=paste(as.numeric(row.names(data_new2)),"_",2,sep=""))
+data_new3<-data.frame()
+for (i in 1:nrow(data_g26)){
+ifelse(any(as.numeric(row.names(data_g24))==as.numeric(row.names(data_g26)[i])),data_new3<-rbind(data_new3,data_g26[i,]),data_new3)
+}
+
+#Creating pivot table
+table26<-data.frame(cbind(data_new3[,1],data_new2[,2],data_new2[,3],data_new2[,4],(data_new2[,2]-data_new1[,2]),(data_new2[,3]-data_new1[,3]),(data_new2[,4]-data_new1[,4])),row.names=paste(as.numeric(row.names(data_new3)),"_",26,sep=""))
+colnames(table26)<-c("Link_t","SP_t_1","JC_t_1","CC_t_1","SP_t_1_SP_t_2","JC_t_1_JC_t_2","CC_t_1_CC_t_2")
+
+table<-rbind(table4,table5,table6,table7,table8,table9,table10,table11,table12,table13,table14,table15,table16,table17,table18,table19,table20,table21,table22,table23,table24,table25,table26)
+SP1<-table[,2]
+SP2<-table[,5]
+SP1<-replace(SP1,SP1==Inf,100)
+SP2<-replace(SP2,SP2==Inf,100)
+SP1<-replace(SP1,SP1==-Inf,-100)
+SP2<-replace(SP2,SP2==-Inf,-100)
+SP1<-replace(SP1,SP1=="NaN",0)
+SP2<-replace(SP2,SP2=="NaN",0)
+table<-data.frame(cbind(table[,1],SP1,table[,c(3,4)],SP2,table[,c(6,7)]),row.names=row.names(table))
+colnames(table)<-c("Link_t","SP_t_1","JC_t_1","CC_t_1","SP_t_1_SP_t_2","JC_t_1_JC_t_2","CC_t_1_CC_t_2")
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+```{r}
+#MACHINE LEARNING#
+table$Link_t <-as.factor(table$Link_t)
+#output<-table$Link_t
+#input<-table[ ,-1]
+#tablen<-ubUnder(X= input, Y=output,  propMinClass = 40)
+#table_bal<-cbind(tablen$X,tablen$Y)
+#colnames(table_bal)<-c("SP_t_1","JC_t_1","CC_t_1","SP_t_1_SP_t_2","JC_t_1_JC_t_2","CC_t_1_CC_t_2","Link_t")
+#ind <- sample(2,nrow(table_bal),replace=TRUE,prob=c(0.7,0.3))
+#train <- table_bal[ind==1,]
+#test <- table_bal[ind==2,]
+p<-nrow(table)-nrow(table26)-nrow(table25)
+train<-table[1:p,]
+test<-table[p:nrow(table),]
+library("unbalanced")
+output_train<-train$Link_t
+input_train<-train[ ,-1]
+table_train<-ubUnder(X= input_train, Y=output_train,  propMinClass = 40)
+balanced_train<-cbind(table_train$X,table_train$Y)
+colnames(balanced_train)<-c("SP_t_1","JC_t_1","CC_t_1","SP_t_1_SP_t_2","JC_t_1_JC_t_2","CC_t_1_CC_t_2","Link_t")
+output_test<-test$Link_t
+input_test<-test[ ,-1]
+table_test<-ubUnder(X= input_test, Y=output_test,  propMinClass = 40)
+balanced_test<-cbind(table_test$X,table_test$Y)
+colnames(balanced_test)<-c("SP_t_1","JC_t_1","CC_t_1","SP_t_1_SP_t_2","JC_t_1_JC_t_2","CC_t_1_CC_t_2","Link_t")
+str(balanced_train)
+library(randomForest)
+#Построим на обучающей выборке модель случайного леса по всем 
+#исходным предикторам, изменив при этом пороговое значение для подгонки модели:
+model.train<-randomForest(Link_t ~., data=balanced_train)
+table(predict(model.train),balanced_train$Link_t)
+print(model.train)
+model.test<-randomForest(Link_t ~., data=balanced_test)
+table(predict(model.test),balanced_test$Link_t)
+print(model.test)
+model2.train<-randomForest(Link_t ~., data=balanced_train, ntree=1500)
+print(model2.train)
+model2.train<-randomForest(Link_t ~., data=balanced_train, ntree=1500, do.trace=100)
+plot(model2.train, main="")
+tuneRF(x=balanced_train[,-7], y=balanced_train$Link_t, trace=FALSE)
+model3.train<-randomForest(Link_t ~., data=balanced_train,ntree=400, mtry=4)
+print(model3.train)
+model3.test<-randomForest(Link_t ~., data=balanced_test,ntree=400, mtry=4)
+print(model3.test)
+importance(model3.train)
+varImpPlot(model3.train)
+plot(margin(model3.train,balanced_train$Link_t))
+predict<-predict(model3.train, type='prob')
+result<-round(predict, digits=2)
+result<-as.data.frame(result)
+
+
+```
+
+```{r}
+#EPIDEMIC IN NETWORK#
+
+#Giant component
+giant.component <- function(graph) { 
+cl <- clusters(graph) 
+induced.subgraph(graph, which(cl$membership == which.max(cl$csize)))} 
+G <- giant.component(g28903615)
+
+#Plotting
+plot(g28903615, layout = layout.fruchterman.reingold, vertex.label = "", vertex.size = 9)
+V(g28903615)[which(cl$membership != which.max(cl$csize))]$color<-"blue"
+V(g28903615)[which(cl$membership == which.max(cl$csize)))]$color<-"red"
+plot(g28903615, layout = layout.fruchterman.reingold, vertex.label = "", vertex.size = 9)
+
+gg<-graph(c(1,2,1,3,1,4,1,5,2,3,3,4),directed=F)
+E(gg)$lty<-c(1,1,1,1,2,2)
+plot(gg, vertex.label=c("Alena","Misha","Maxim","Dima","Lena"),vertex.size=40)
+```
